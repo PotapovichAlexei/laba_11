@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\class">
+      <UniqueIdentifier>{e2eda0ce-f336-493b-904a-da7bd2bc712d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\container">
+      <UniqueIdentifier>{0a9885ff-d0e2-4c89-8d75-49d6f6cd5630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\files">
+      <UniqueIdentifier>{72cb2364-5895-4992-8f37-d9ca81854f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\class">
+      <UniqueIdentifier>{ea3cb393-c3c3-4415-96b7-4b11f2ecffde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\container">
+      <UniqueIdentifier>{af455391-d55b-4d96-a2e6-e9eb844712ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\files">
+      <UniqueIdentifier>{90a58ef2-838a-4add-95ff-b7be50a9a14b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Algoritms.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryFile.h">
+      <Filter>Файлы заголовков\files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextFile.h">
+      <Filter>Файлы заголовков\files</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Файлы заголовков\files</Filter>
+    </ClInclude>
+    <ClInclude Include="Desktop.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Laptop.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Monoblock.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Portable.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemBlock.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Tablet.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="VM.h">
+      <Filter>Файлы заголовков\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Файлы заголовков\container</Filter>
+    </ClInclude>
+    <ClInclude Include="MyRing.h">
+      <Filter>Файлы заголовков\container</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterator.h">
+      <Filter>Файлы заголовков\container</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Interface.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryFile.cpp">
+      <Filter>Файлы ресурсов\files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextFile.cpp">
+      <Filter>Файлы ресурсов\files</Filter>
+    </ClCompile>
+    <ClCompile Include="Desktop.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Laptop.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Monoblock.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemBlock.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Tablet.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="VM.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Portable.cpp">
+      <Filter>Файлы ресурсов\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Iterator.cpp">
+      <Filter>Файлы ресурсов\container</Filter>
+    </ClCompile>
+    <ClCompile Include="MyRing.cpp">
+      <Filter>Файлы ресурсов\container</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Файлы ресурсов\container</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
