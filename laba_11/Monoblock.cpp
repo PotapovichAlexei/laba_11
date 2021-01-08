@@ -42,15 +42,27 @@ ostream& operator<<(ostream& out, Monoblock& obj) {
 
 fstream& operator>>(fstream& in, Monoblock& obj)
 {
-	in >> dynamic_cast<Desktop&> (obj) >> obj.videoCard;
+	in >> dynamic_cast<Desktop&> (obj);
+	size_t len;
+	char* buf;
+	in.read((char*)&len, sizeof(size_t));
+	buf = new char[len + 1];
+	in.read(buf, len);
+	buf[len] = 0;
+	obj.videoCard = buf;
+	delete[]buf;
 	return in;
 }
 
 fstream& operator<<(fstream& out, Monoblock& obj) {
 	out << dynamic_cast<Desktop&> (obj);
-	out << setw(17) << obj.videoCard << '\n';
+	size_t len = obj.videoCard.length();
+	out.write((char*)&len, sizeof(size_t));
+	out.write(obj.videoCard.data(), len);
+
 	return out;
 }
+
 
 ifstream& operator>>(ifstream& in, Monoblock& obj)
 {

@@ -36,13 +36,15 @@ ostream& operator<<(ostream& out, Desktop& obj) {
 
 fstream& operator>>(fstream& in, Desktop& obj)
 {
-	in >> dynamic_cast<VM&> (obj) >> obj.powerSupply;
+	in >> dynamic_cast<VM&> (obj);
+	in.read((char*)&obj.powerSupply, sizeof(int));
 	return in;
 }
 
 fstream& operator<<(fstream& out, Desktop& obj) {
 	out << dynamic_cast<VM&> (obj);
-	out << setw(17) << obj.powerSupply;
+	out.write((char*)&obj.powerSupply, sizeof(int));
+	//out << obj.powerSupply;
 	return out;
 }
 

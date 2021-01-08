@@ -4,7 +4,7 @@
 template<typename T>
 class BinaryFile : public File
 {
-private:
+public:
 	fstream FileStream;
 public:
 	BinaryFile(const string = "");
@@ -12,7 +12,7 @@ public:
 	bool openToOutput();
 	void rewindFile();
 	void inputToFile(T& Object);
-	void outputToFile(T& Object);
+	void printFromFile(T& Object);
 	bool endFile();
 	~BinaryFile();
 };

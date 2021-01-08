@@ -83,13 +83,36 @@ ostream& operator<<(ostream& out, VM& obj) {
 
 fstream& operator>>(fstream& in, VM& obj)
 {
-	in >> obj.brand >> obj.processor;
+	size_t len;
+	char* buf;
+
+	in.read((char*)&len, sizeof(size_t));
+	buf = new char[len + 1];
+	in.read(buf, len);
+	buf[len] = 0;
+	obj.brand = buf;
+	delete[]buf;
+
+	in.read((char*)&len, sizeof(size_t));
+	buf = new char[len + 1];
+	in.read(buf, len);
+	buf[len] = 0;
+	obj.processor = buf;
+	delete[]buf;
+
+	//in >> obj.brand >> obj.processor;
 	return in;
 }
 
 fstream& operator<<(fstream& out, VM& obj) {
-	out << setw(17) << obj.brand;
-	out << setw(17) << obj.processor;
+	size_t len = obj.brand.length();
+	out.write((char*)&len, sizeof(size_t));
+	out.write(obj.brand.data(), len);
+	//out << obj.brand;
+	len = obj.processor.length();
+	out.write((char*)&len, sizeof(size_t));
+	out.write(obj.processor.data(), len);
+	//out << obj.processor;
 	return out;
 }
 

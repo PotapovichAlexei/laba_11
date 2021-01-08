@@ -41,13 +41,14 @@ ostream& operator<<(ostream& out, Tablet& obj) {
 
 fstream& operator>>(fstream& in, Tablet& obj)
 {
-	in >> dynamic_cast<Portable&> (obj) >> obj.diagonal;
+	in >> dynamic_cast<Portable&> (obj);
+	in.read((char*)&obj.diagonal, sizeof(float));
 	return in;
 }
 
 fstream& operator<<(fstream& out, Tablet& obj) {
 	out << dynamic_cast<Portable&> (obj);
-	out << setw(17) << obj.diagonal << '\n';
+	out.write((char*)&obj.diagonal, sizeof(float));
 	return out;
 }
 

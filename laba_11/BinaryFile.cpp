@@ -37,14 +37,12 @@ inline void BinaryFile<T>::rewindFile()
 template<typename T>
 inline void BinaryFile<T>::inputToFile(T& object)
 {
-	//this->FileStream.write((char*)&Object, sizeof(T));
 	this->FileStream << object;
 }
 
 template<typename T>
-inline void BinaryFile<T>::outputToFile(T& object)
+inline void BinaryFile<T>::printFromFile(T& object)
 {
-	//this->FileStream.read((char*)&Object, sizeof(T));
 	this->FileStream >> object;
 }
 

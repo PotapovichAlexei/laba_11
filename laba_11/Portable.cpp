@@ -35,15 +35,17 @@ ostream& operator<<(ostream& out, Portable& obj) {
 
 fstream& operator>>(fstream& in, Portable& obj)
 {
-	in >> dynamic_cast<VM&> (obj) >> obj.energyReserve;
+	in >> dynamic_cast<VM&> (obj);
+	in.read((char*)&obj.energyReserve, sizeof(int));
 	return in;
 }
 
 fstream& operator<<(fstream& out, Portable& obj) {
 	out << dynamic_cast<VM&> (obj);
-	out << setw(17) << obj.energyReserve;
+	out.write((char*)&obj.energyReserve, sizeof(int));
 	return out;
 }
+
 
 ifstream& operator>>(ifstream& in, Portable& obj)
 {

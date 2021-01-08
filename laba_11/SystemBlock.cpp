@@ -42,16 +42,25 @@ ostream& operator<<(ostream& out, SystemBlock& obj) {
 
 fstream& operator>>(fstream& in, SystemBlock& obj)
 {
-	in >> dynamic_cast<Desktop&> (obj) >> obj.monitor;
+	in >> dynamic_cast<Desktop&> (obj);
+	size_t len;
+	char* buf;
+	in.read((char*)&len, sizeof(size_t));
+	buf = new char[len + 1];
+	in.read(buf, len);
+	buf[len] = 0;
+	obj.monitor = buf;
+	delete[]buf;
 	return in;
 }
 
 fstream& operator<<(fstream& out, SystemBlock& obj) {
 	out << dynamic_cast<Desktop&> (obj);
-	out << setw(17) << obj.monitor << '\n';
+	size_t len = obj.monitor.length();
+	out.write((char*)&len, sizeof(size_t));
+	out.write(obj.monitor.data(), len);
 	return out;
 }
-
 ifstream& operator>>(ifstream& in, SystemBlock& obj)
 {
 	in >> dynamic_cast<Desktop&> (obj) >> obj.monitor;

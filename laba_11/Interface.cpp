@@ -24,7 +24,7 @@ void Interface<T>::BaseMenu()
 	do {
 	system("CLS");
 	cout << "Choose action: " << endl;
-	cout << " 1) vector" << endl;
+	cout << " 1) Vector" << endl;
 	cout << " 2) MyRing" << endl;
 	cout << " 0) exit" << endl;
 	cout << "Your choice: ";
@@ -38,7 +38,7 @@ void Interface<T>::BaseMenu()
 			
 			do {
 				system("CLS");
-				cout << "\t\t~Vector" << endl << endl;
+				cout << "\t\t~Vector~" << endl << endl;
 				cout << "Menu: " << endl;
 				cout << " 1) Monoblock" << endl;
 				cout << " 2) System Block" << endl;
@@ -157,7 +157,7 @@ void Interface<T>::BaseMenu()
 	_chdir(location);
 }
 
-template<class T>
+template<typename T>
 inline void Interface<T>::RingMenu(string fname) {
 	char location[100];
 	_getcwd(location, 100);
@@ -298,13 +298,15 @@ inline void Interface<T>::RingMenu(string fname) {
 		case 11: {
 			if (ring.Begin()) {
 				Iterator<T> tmp = ring.Begin();
-				BinaryFile<T> BFile((fname + ".bin").c_str());
+				BinaryFile<T> BFile((fname).c_str());
 				if (BFile.openToInput() && ring.getSize() != -1) {
+					int size = ring.getSize();
+					BFile.FileStream.write((char*)&size, sizeof(int));
 					do {
 						BFile.inputToFile(tmp.curr->data);
 						++tmp;
 					} while (tmp != ring.Begin());
-					
+
 				}
 				else if (ring.getSize() == -1)
 					BFile.openToInput();
@@ -315,19 +317,22 @@ inline void Interface<T>::RingMenu(string fname) {
 
 			ring.clear();
 			T tmp;
-			BinaryFile<T> BFile((fname + ".bin").c_str());
+			BinaryFile<T> BFile((fname).c_str());
 			if (BFile.openToOutput()) {
-				while (true)
+				int size;
+				BFile.FileStream.read((char*)&size, sizeof(int));
+				while (size + 1)
 				{
-					BFile.outputToFile(tmp);
-					
+					BFile.printFromFile(tmp);
 					if (BFile.endFile())
 						break;
 					ring.push_back(tmp);
 
+					--size;
 				}
 			}
-			break;	
+
+			break;
 		}
 		case 13: {
 			TextFile<T> TFile((fname + ".txt").c_str());
@@ -349,7 +354,7 @@ inline void Interface<T>::RingMenu(string fname) {
 	_chdir(location);
 }
 
-template<class T>
+template<typename T>
 void Interface<T>::VectorMenu(string fname)
 {
 	char location[100];
@@ -449,7 +454,7 @@ void Interface<T>::VectorMenu(string fname)
 			break;
 		}
 		case 7: {
-			if(!vect.empty()) sort(vect.end(), vect.begin());
+			if(!vect.empty()) sort(vect.rbegin(), vect.rend());
 			break;
 		}
 		
@@ -509,6 +514,8 @@ void Interface<T>::VectorMenu(string fname)
 			BinaryFile<T> BFile((fname + ".bin").c_str());
 			if (!vect.empty()) {
 				if (BFile.openToInput()) {
+					int size = vect.size();
+					BFile.FileStream.write((char*)&size, sizeof(int));
 					for (auto it : vect) {
 						BFile.inputToFile(it);
 					}
@@ -523,13 +530,16 @@ void Interface<T>::VectorMenu(string fname)
 			T tmp;
 			BinaryFile<T> BFile((fname + ".bin").c_str());
 			if (BFile.openToOutput()) {
-				while (true)
+				int size;
+				BFile.FileStream.read((char*)&size, sizeof(int));
+				while (size)
 				{
-					BFile.outputToFile(tmp);
+					BFile.printFromFile(tmp);
 
 					if (BFile.endFile())
 						break;
 					vect.push_back(tmp);
+					--size;
 
 				}
 			}

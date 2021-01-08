@@ -43,13 +43,23 @@ ostream& operator<<(ostream& out, Laptop& obj) {
 
 fstream& operator>>(fstream& in, Laptop& obj)
 {
-	in >> dynamic_cast<Portable&> (obj) >> obj.motherboard;
+	in >> dynamic_cast<Portable&> (obj);
+	size_t len;
+	char* buf;
+	in.read((char*)&len, sizeof(size_t));
+	buf = new char[len + 1];
+	in.read(buf, len);
+	buf[len] = 0;
+	obj.motherboard = buf;
+	delete[]buf;
 	return in;
 }
 
 fstream& operator<<(fstream& out, Laptop& obj) {
 	out << dynamic_cast<Portable&> (obj);
-	out << setw(17) << obj.motherboard << '\n';
+	size_t len = obj.motherboard.length();
+	out.write((char*)&len, sizeof(size_t));
+	out.write(obj.motherboard.data(), len);
 	return out;
 }
 
